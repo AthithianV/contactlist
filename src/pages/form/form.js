@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./form.module.css";
 
-export default function Component({ setShowForm, contact }) {
+export default function Form({ setShowForm, contact }) {
   const [add, setAdd] = useState(false);
   const nameRef = useRef();
   const emailRef = useRef();
@@ -9,6 +9,9 @@ export default function Component({ setShowForm, contact }) {
   const cityRef = useRef();
 
   useEffect(() => {
+    if (!add) {
+      return;
+    }
     if (contact.name) {
       fetch(`https://jsonplaceholder.typicode.com/users/${contact.id}`, {
         method: "PUT",
@@ -28,6 +31,7 @@ export default function Component({ setShowForm, contact }) {
         .then((response) => response.json())
         .then((json) => {
           console.log(json);
+          setShowForm(false);
         });
     } else {
       fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -46,6 +50,7 @@ export default function Component({ setShowForm, contact }) {
 
         .then((json) => {
           console.log(json);
+          setShowForm(false);
         });
     }
   }, [add, contact.id, contact.name, setShowForm]);
@@ -58,7 +63,7 @@ export default function Component({ setShowForm, contact }) {
         <div className={styles.field}>
           <label>Name: </label>
           <input
-            classname={styles.input}
+            className={styles.input}
             type="text"
             ref={nameRef}
             placeholder={contact.name}
@@ -68,7 +73,7 @@ export default function Component({ setShowForm, contact }) {
         <div className={styles.field}>
           <label>Email: </label>
           <input
-            classname={styles.input}
+            className={styles.input}
             type="email"
             ref={emailRef}
             placeholder={contact.email}
@@ -78,7 +83,7 @@ export default function Component({ setShowForm, contact }) {
         <div className={styles.field}>
           <label>Phone No:</label>
           <input
-            classname={styles.input}
+            className={styles.input}
             type="text"
             ref={phoneRef}
             placeholder={contact.phone}
@@ -88,7 +93,7 @@ export default function Component({ setShowForm, contact }) {
         <div className={styles.field}>
           <label>City: </label>
           <input
-            classname={styles.input}
+            className={styles.input}
             type="text"
             ref={cityRef}
             placeholder={contact.address.city}
