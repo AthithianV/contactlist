@@ -43,6 +43,7 @@ export default function Component({ setShowForm, contact }) {
         .then((response) => response.json())
         .then((json) => console.log(json));
     }
+    setShowForm(false);
   }, [add, contact.id, contact.name]);
 
   return (

@@ -29,7 +29,7 @@ export default function Table({ setShowForm, setContact }) {
         <tbody className={styles.body}>
           {contacts &&
             contacts.map((c, index) => (
-              <tr>
+              <tr key={index}>
                 <td className={styles.serial}>{c.id}</td>
                 <td>{c.name}</td>
                 <td>{c.email}</td>
