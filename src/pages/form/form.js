@@ -9,7 +9,6 @@ export default function Component({ setShowForm, contact }) {
   const cityRef = useRef();
 
   useEffect(() => {
-    console.log("Tem");
     if (contact.name) {
       fetch(`https://jsonplaceholder.typicode.com/users/${contact.id}`, {
         method: "PUT",
@@ -44,7 +43,7 @@ export default function Component({ setShowForm, contact }) {
         .then((response) => response.json())
         .then((json) => console.log(json));
     }
-  }, [add]);
+  }, [add, contact.id, contact.name]);
 
   return (
     <div className={styles.main}>
