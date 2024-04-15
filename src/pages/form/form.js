@@ -44,7 +44,7 @@ export default function Component({ setShowForm, contact }) {
         .then((json) => console.log(json));
     }
     setShowForm(false);
-  }, [add, contact.id, contact.name]);
+  }, [add, contact.id, contact.name, setShowForm]);
 
   return (
     <div className={styles.main}>
