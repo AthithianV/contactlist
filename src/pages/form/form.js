@@ -28,7 +28,6 @@ export default function Component({ setShowForm, contact }) {
         .then((response) => response.json())
         .then((json) => {
           console.log(json);
-          setShowForm(false);
         });
     } else {
       fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -47,7 +46,6 @@ export default function Component({ setShowForm, contact }) {
 
         .then((json) => {
           console.log(json);
-          setShowForm(false);
         });
     }
   }, [add, contact.id, contact.name, setShowForm]);
